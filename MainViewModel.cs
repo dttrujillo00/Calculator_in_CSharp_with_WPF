@@ -7,10 +7,10 @@ namespace Calculator
     public class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-        private ICommand _clickCommandSum;
-        private ICommand _clickCommandSub;
-        private ICommand _clickCommandMultiply;
-        private ICommand _clickCommandDivide;
+        private ICommand? _clickCommandSum;
+        private ICommand? _clickCommandSub;
+        private ICommand? _clickCommandMultiply;
+        private ICommand? _clickCommandDivide;
         public string PropertyForResult { get; set; } = string.Empty;
         public string PropertyForInput1 { get; set; } = string.Empty;
         public string PropertyForInput2 { get; set; } = string.Empty;
