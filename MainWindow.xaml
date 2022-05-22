@@ -1,0 +1,38 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <TabControl>
+            <TabItem Header="Calculator">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" Margin="179,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Center" Margin="0,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="516,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+                    <Button Command="{Binding SumCommand}" Content="Suma" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Center" Height="45" Width="72"/>
+                    <Button Command="{Binding SubCommand}" Content="Resta" HorizontalAlignment="Left" Margin="382,0,0,0" VerticalAlignment="Center" Height="45" Width="72"/>
+                    <Button Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Left" Margin="179,290,0,0" VerticalAlignment="Top" Height="45" Width="72"/>
+                    <Button Command="{Binding DivideCommand}" Content="Division" HorizontalAlignment="Left" Margin="388,290,0,0" VerticalAlignment="Top" Height="45" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Convertor">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="decimal_input" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+                    <TextBox x:Name="binary_input" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+                    <Label Content="Decimal" HorizontalAlignment="Center" Margin="-140,-50,0,0" VerticalAlignment="Center"/>
+                    <Label Content="Binary" HorizontalAlignment="Center" Margin="140,-50,0,0" VerticalAlignment="Center"/>
+                    <Button x:Name="btn_convertir" Content="Convert" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,70,0,0" Padding="5"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+    </Grid>
+</Window>
