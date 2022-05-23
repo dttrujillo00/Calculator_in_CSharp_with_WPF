@@ -6,22 +6,30 @@ namespace Calculator
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        public MainViewModel()
+        {
+            InitializeCommands();
+        }
+
+        private void InitializeCommands()
+        {
+            SumCommand = new CommandHandler(() => SumAction(), () => CanExecute);
+        }
+
+        #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        #endregion
+
+        #region Commands
+
         private ICommand? _clickCommandSum;
         private ICommand? _clickCommandSub;
         private ICommand? _clickCommandMultiply;
-        private ICommand? _clickCommandDivide;
-        public string PropertyForResult { get; set; } = string.Empty;
-        public string PropertyForInput1 { get; set; } = string.Empty;
-        public string PropertyForInput2 { get; set; } = string.Empty;
+        private ICommand? _clickCommandDivide;       
 
-        public ICommand SumCommand
-        {
-            get
-            {
-                return _clickCommandSum ?? (_clickCommandSum = new CommandHandler(() => SumAction(), () => CanExecute));
-            }
-        }
+        public ICommand SumCommand { get; private set; }
         public ICommand SubCommand
         {
             get
@@ -50,32 +58,30 @@ namespace Calculator
         public void SumAction()
         {
             PropertyForResult = (Double.Parse(PropertyForInput1) + Double.Parse(PropertyForInput2)).ToString();
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PropertyForResult"));
+            
         }
 
         public void SubAction()
         {
             PropertyForResult = (Double.Parse(PropertyForInput1) - Double.Parse(PropertyForInput2)).ToString();
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PropertyForResult"));
         }
 
         public void MultiplyAction()
         {
             PropertyForResult = (Double.Parse(PropertyForInput1) * Double.Parse(PropertyForInput2)).ToString();
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PropertyForResult"));
         }
 
         public void DivideAction()
         {
             PropertyForResult = (Double.Parse(PropertyForInput1) / Double.Parse(PropertyForInput2)).ToString();
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs("PropertyForResult"));
+            
         }
 
         public bool CanExecute
         {
             get
             {
-                if(PropertyForInput1 != "" && PropertyForInput2 != "")
+                if (PropertyForInput1 != "" && PropertyForInput2 != "")
                     return true;
                 return false;
             }
@@ -85,12 +91,35 @@ namespace Calculator
         {
             get
             {
-                if(PropertyForInput1 != "" && PropertyForInput2 != "" && Double.Parse(PropertyForInput2) != 0.0)
+                if (PropertyForInput1 != "" && PropertyForInput2 != "" && Double.Parse(PropertyForInput2) != 0.0)
                     return true;
 
                 return false;
             }
         }
+
+        #endregion
+
+        #region Property
+
+
+        private string _propertyForResult;
+
+        public string PropertyForResult
+        {
+            get { return _propertyForResult; }
+            set { 
+                _propertyForResult = value;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(PropertyForResult)));
+            }
+        }
+
+
+        public string PropertyForInput1 { get; set; } = string.Empty;
+        public string PropertyForInput2 { get; set; } = string.Empty;
+
+        #endregion
+
     }
 
     /*********************************************

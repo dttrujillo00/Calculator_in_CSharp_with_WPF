@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Calculator"
+        xmlns:local="clr-namespace:Calculator" 
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -11,17 +12,35 @@
         <TabControl>
             <TabItem Header="Calculator">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" Margin="179,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Center" Margin="0,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBlock Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="516,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                    <Button Command="{Binding SumCommand}" Content="Suma" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Center" Height="45" Width="72"/>
-                    <Button Command="{Binding SubCommand}" Content="Resta" HorizontalAlignment="Left" Margin="382,0,0,0" VerticalAlignment="Center" Height="45" Width="72"/>
-                    <Button Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Left" Margin="179,290,0,0" VerticalAlignment="Top" Height="45" Width="72"/>
-                    <Button Command="{Binding DivideCommand}" Content="Division" HorizontalAlignment="Left" Margin="388,290,0,0" VerticalAlignment="Top" Height="45" Width="72"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Grid.Column="1" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <TextBlock Grid.Column="2" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Row="1" Grid.Column="0">
+                        <Button Margin="10" Command="{Binding SumCommand}" Content="Suma" HorizontalAlignment="Center" Height="45" Width="72"/>
+                        <Button Margin="10" Command="{Binding SubCommand}" Content="Resta" HorizontalAlignment="Center" Height="45" Width="72"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <Button Margin="10" Grid.Row="1" Grid.Column="0" Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Center"  Height="45" Width="72"/>
+                        <Button Margin="10" Grid.Row="1" Grid.Column="1" Command="{Binding DivideCommand}" Content="Division" HorizontalAlignment="Center"  Height="45" Width="72"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="2">
+                        <ComboBox SelectedIndex="{Binding }" Selected="">
+                            <ComboBoxItem>Decimal</ComboBoxItem>
+                            <ComboBoxItem>Binario</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Convertor">
+            <TabItem Header="Conversor">
                 <Grid Background="#FFE5E5E5">
                     <TextBox x:Name="decimal_input" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
                     <TextBox x:Name="binary_input" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
