@@ -17,6 +17,7 @@ namespace Calculator
             SubtractionCommand = new CommandHandler(() => SubtractionAction(), () => CanExecute);
             MultiplyCommand = new CommandHandler(() => MultiplyAction(), () => CanExecute);
             DivideCommand = new CommandHandler(() => DivideAction(), () => CanExecuteDivide);
+            ConvertToBinaryCommand = new CommandHandler(() => ConvertAction(), () => CanExecuteConversion);
         }
 
         #region INotifyPropertyChanged
@@ -31,6 +32,7 @@ namespace Calculator
         public ICommand SubtractionCommand { get; private set; }
         public ICommand MultiplyCommand { get; private set; }
         public ICommand DivideCommand { get; private set; }
+        public ICommand ConvertToBinaryCommand { get; private set; }
 
         public void SumAction()
         {
@@ -54,6 +56,22 @@ namespace Calculator
             
         }
 
+        public void ConvertAction()
+        {
+            int decimal_number = Int32.Parse(PropertyForDecimal);
+            int reminder;
+            string binary = string.Empty;
+
+            while (decimal_number > 0)
+            {
+                reminder = decimal_number % 2;
+                decimal_number /= 2;
+                binary = reminder.ToString() + binary;
+            }
+
+            PropertyForBinary = binary;
+        }
+
         public bool CanExecute
         {
             get
@@ -74,6 +92,16 @@ namespace Calculator
             }
         }
 
+        public bool CanExecuteConversion
+        {
+            get
+            {
+                if (PropertyForDecimal == "")
+                    return false;
+                return true;
+            }
+        }
+
         #endregion
 
         #region Property
@@ -89,8 +117,21 @@ namespace Calculator
             }
         }
 
+        private string _propertyForBinary;
+
+        public string PropertyForBinary
+        {
+            get { return _propertyForBinary; }
+            set { 
+                _propertyForBinary = value; 
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(PropertyForBinary)));
+            }
+        }
+
+
         public string PropertyForInput1 { get; set; } = string.Empty;
         public string PropertyForInput2 { get; set; } = string.Empty;
+        public string PropertyForDecimal { get; set; } = string.Empty;
 
         #endregion
 

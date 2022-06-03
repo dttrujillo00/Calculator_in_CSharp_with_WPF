@@ -26,7 +26,7 @@
                     <TextBlock Grid.Column="2" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Grid.Column="0">
                         <Button Margin="10" Command="{Binding SumCommand}" Content="Suma" HorizontalAlignment="Center" Height="45" Width="72"/>
-                        <Button Margin="10" Command="{Binding SubCommand}" Content="Resta" HorizontalAlignment="Center" Height="45" Width="72"/>
+                        <Button Margin="10" Command="{Binding SubtractionCommand}" Content="Resta" HorizontalAlignment="Center" Height="45" Width="72"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1">
                         <Button Margin="10" Grid.Row="1" Grid.Column="0" Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Center"  Height="45" Width="72"/>
@@ -36,11 +36,11 @@
             </TabItem>
             <TabItem Header="Conversor">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="decimal_input" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
-                    <TextBox x:Name="binary_input" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Text="{Binding PropertyForDecimal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Text="{Binding PropertyForBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <Label Content="Decimal" HorizontalAlignment="Center" Margin="-140,-50,0,0" VerticalAlignment="Center"/>
                     <Label Content="Binary" HorizontalAlignment="Center" Margin="140,-50,0,0" VerticalAlignment="Center"/>
-                    <Button x:Name="btn_convertir" Content="Convert" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,70,0,0" Padding="5"/>
+                    <Button Command="{Binding ConvertToBinaryCommand}" Content="Convert" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,70,0,0" Padding="5"/>
 
                 </Grid>
             </TabItem>
