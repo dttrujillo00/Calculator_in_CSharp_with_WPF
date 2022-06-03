@@ -21,7 +21,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <TextBox Grid.Column="1" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <TextBlock Grid.Column="2" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
                     <StackPanel Grid.Row="1" Grid.Column="0">
@@ -31,12 +31,6 @@
                     <StackPanel Grid.Row="1" Grid.Column="1">
                         <Button Margin="10" Grid.Row="1" Grid.Column="0" Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Center"  Height="45" Width="72"/>
                         <Button Margin="10" Grid.Row="1" Grid.Column="1" Command="{Binding DivideCommand}" Content="Division" HorizontalAlignment="Center"  Height="45" Width="72"/>
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="2">
-                        <ComboBox SelectedIndex="{Binding }" Selected="">
-                            <ComboBoxItem>Decimal</ComboBoxItem>
-                            <ComboBoxItem>Binario</ComboBoxItem>
-                        </ComboBox>
                     </StackPanel>
                 </Grid>
             </TabItem>

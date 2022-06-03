@@ -22,38 +22,9 @@ namespace Calculator
 
         #endregion
 
-        #region Commands
-
-        private ICommand? _clickCommandSum;
-        private ICommand? _clickCommandSub;
-        private ICommand? _clickCommandMultiply;
-        private ICommand? _clickCommandDivide;       
+        #region Commands    
 
         public ICommand SumCommand { get; private set; }
-        public ICommand SubCommand
-        {
-            get
-            {
-                return _clickCommandSub ?? (_clickCommandSub = new CommandHandler(() => SubAction(), () => CanExecute));
-            }
-        }
-
-        public ICommand MultiplyCommand
-        {
-            get
-            {
-                return _clickCommandMultiply ?? (_clickCommandMultiply = new CommandHandler(() => MultiplyAction(), () => CanExecute));
-            }
-        }
-
-        public ICommand DivideCommand
-        {
-            get
-            {
-                return _clickCommandDivide ?? (_clickCommandDivide = new CommandHandler(() => DivideAction(), () => CanExecuteDivide));
-            }
-        }
-
 
         public void SumAction()
         {
@@ -81,9 +52,9 @@ namespace Calculator
         {
             get
             {
-                if (PropertyForInput1 != "" && PropertyForInput2 != "")
-                    return true;
-                return false;
+                if (PropertyForInput1 == "" || PropertyForInput2 == "")
+                    return false;
+                return true;
             }
         }
 
@@ -91,17 +62,15 @@ namespace Calculator
         {
             get
             {
-                if (PropertyForInput1 != "" && PropertyForInput2 != "" && Double.Parse(PropertyForInput2) != 0.0)
-                    return true;
-
-                return false;
+                if (PropertyForInput1 == "" || PropertyForInput2 == "" || Double.Parse(PropertyForInput2) == 0.0)
+                    return false;
+                return true;
             }
         }
 
         #endregion
 
         #region Property
-
 
         private string _propertyForResult;
 
@@ -113,7 +82,6 @@ namespace Calculator
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(PropertyForResult)));
             }
         }
-
 
         public string PropertyForInput1 { get; set; } = string.Empty;
         public string PropertyForInput2 { get; set; } = string.Empty;
