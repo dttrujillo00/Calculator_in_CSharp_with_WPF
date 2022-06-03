@@ -14,6 +14,9 @@ namespace Calculator
         private void InitializeCommands()
         {
             SumCommand = new CommandHandler(() => SumAction(), () => CanExecute);
+            SubtractionCommand = new CommandHandler(() => SubtractionAction(), () => CanExecute);
+            MultiplyCommand = new CommandHandler(() => MultiplyAction(), () => CanExecute);
+            DivideCommand = new CommandHandler(() => DivideAction(), () => CanExecuteDivide);
         }
 
         #region INotifyPropertyChanged
@@ -25,6 +28,9 @@ namespace Calculator
         #region Commands    
 
         public ICommand SumCommand { get; private set; }
+        public ICommand SubtractionCommand { get; private set; }
+        public ICommand MultiplyCommand { get; private set; }
+        public ICommand DivideCommand { get; private set; }
 
         public void SumAction()
         {
@@ -32,7 +38,7 @@ namespace Calculator
             
         }
 
-        public void SubAction()
+        public void SubtractionAction()
         {
             PropertyForResult = (Double.Parse(PropertyForInput1) - Double.Parse(PropertyForInput2)).ToString();
         }
