@@ -11,31 +11,32 @@
 
         <TabControl>
             <TabItem Header="Calculator">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#24292e">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="150*"/>
+                        <ColumnDefinition Width="150*"/>
+                        <ColumnDefinition Width="250*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-                    <TextBox Grid.Column="1" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-                    <TextBlock Grid.Column="2" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
-                    <StackPanel Grid.Row="1" Grid.Column="0">
-                        <Button Margin="10" Command="{Binding SumCommand}" Content="Suma" HorizontalAlignment="Center" Height="45" Width="72"/>
-                        <Button Margin="10" Command="{Binding SubtractionCommand}" Content="Resta" HorizontalAlignment="Center" Height="45" Width="72"/>
+                    <TextBox Style="{StaticResource Input}" Grid.Column="1" Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Style="{StaticResource Input}" Grid.Column="2" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Style="{StaticResource TextBlock}" Grid.Column="3" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <StackPanel Grid.Column="1" Grid.Row="2">
+                        <Button Style="{StaticResource Button}" Command="{Binding SumCommand}" Content="+"/>
+                        <Button Style="{StaticResource Button}" Command="{Binding SubtractionCommand}" Content="-"/>
                     </StackPanel>
-                    <StackPanel Grid.Row="1" Grid.Column="1">
-                        <Button Margin="10" Grid.Row="1" Grid.Column="0" Command="{Binding MultiplyCommand}" Content="Multiplicacion" HorizontalAlignment="Center"  Height="45" Width="72"/>
-                        <Button Margin="10" Grid.Row="1" Grid.Column="1" Command="{Binding DivideCommand}" Content="Division" HorizontalAlignment="Center"  Height="45" Width="72"/>
+                    <StackPanel Grid.Column="2" Grid.Row="2">
+                        <Button Style="{StaticResource Button}" Command="{Binding MultiplyCommand}" Content="*"/>
+                        <Button Style="{StaticResource Button}" Command="{Binding DivideCommand}" Content="/"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Conversor">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#24292e">
                     <TextBox Text="{Binding PropertyForDecimal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <TextBox Text="{Binding PropertyForBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
                     <Label Content="Decimal" HorizontalAlignment="Center" Margin="-140,-50,0,0" VerticalAlignment="Center"/>
