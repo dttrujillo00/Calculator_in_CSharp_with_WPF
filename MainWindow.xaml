@@ -22,17 +22,26 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox Style="{StaticResource Input}" Grid.Column="1" Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBox Style="{StaticResource Input}" Grid.Column="2" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    <TextBlock Style="{StaticResource TextBlock}" Grid.Column="3" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Border Grid.Column="1" Style="{StaticResource BorderInput}">
+                        <TextBox Style="{StaticResource Input}" Text="{Binding PropertyForInput1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+                    <Border Grid.Column="2" Style="{StaticResource BorderInput}">
+                        <TextBox Style="{StaticResource Input}" Text="{Binding PropertyForInput2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+                    <Border Grid.Column="3" Style="{StaticResource BorderResult}">
+                        <TextBlock Style="{StaticResource TextBlock}" Text="{Binding PropertyForResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+
                     <StackPanel Grid.Column="1" Grid.Row="2">
                         <Button Style="{StaticResource Button}" Command="{Binding SumCommand}" Content="+"/>
                         <Button Style="{StaticResource Button}" Command="{Binding SubtractionCommand}" Content="-"/>
                     </StackPanel>
+                    
                     <StackPanel Grid.Column="2" Grid.Row="2">
                         <Button Style="{StaticResource Button}" Command="{Binding MultiplyCommand}" Content="*"/>
                         <Button Style="{StaticResource Button}" Command="{Binding DivideCommand}" Content="/"/>
                     </StackPanel>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="Conversor">

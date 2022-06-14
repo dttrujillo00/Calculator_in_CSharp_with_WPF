@@ -5,6 +5,23 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <Style x:Key="BorderInput" TargetType="Border">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#FF3A3D67"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+
+        <Style x:Key="BorderResult" TargetType="Border">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="#FF3A3D67"/>
+        </Style>
+
         <Style x:Key="Input" TargetType="TextBox">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -12,9 +29,10 @@
             <Setter Property="Height" Value="20"/>
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="#FF3A3D67"/>
             <Setter Property="Foreground" Value="#fff"/>
             <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
 
         <Style x:Key="TextBlock" TargetType="TextBlock">
@@ -26,11 +44,18 @@
             <Setter Property="FontSize" Value="15"/>
         </Style>
 
+        <Style x:Key="BorderButton" TargetType="Border">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Width" Value="30"/>
             <Setter Property="Height" Value="30"/>
-            <Setter Property="Background" Value="#FF3A3D67"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#FFF"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="15"/>
