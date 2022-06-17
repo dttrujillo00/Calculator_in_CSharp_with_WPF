@@ -46,11 +46,24 @@
             </TabItem>
             <TabItem Header="Conversor">
                 <Grid Background="#24292e">
-                    <TextBox Text="{Binding PropertyForDecimal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="-140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-                    <TextBox Text="{Binding PropertyForBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Margin="140,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-                    <Label Content="Decimal" HorizontalAlignment="Center" Margin="-140,-50,0,0" VerticalAlignment="Center"/>
-                    <Label Content="Binary" HorizontalAlignment="Center" Margin="140,-50,0,0" VerticalAlignment="Center"/>
-                    <Button Command="{Binding ConvertToBinaryCommand}" Content="Convert" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,70,0,0" Padding="5"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Style="{StaticResource BorderInput}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20,0">
+                        <TextBox Style="{StaticResource Input}" Text="{Binding PropertyForDecimal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource BorderInput}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0">
+                        <TextBox  Style="{StaticResource Input}" Text="{Binding PropertyForBinary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Border>
+                    <Label Content="Decimal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,40,40,40" Foreground="#fff"/>
+                    <Label Grid.Column="1" Content="Binary" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="40,40,0,40" Foreground="#fff"/>
+                    <Button Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Style="{StaticResource ButtonConvert}" Command="{Binding ConvertToBinaryCommand}" Content="Convert"/>
 
                 </Grid>
             </TabItem>
